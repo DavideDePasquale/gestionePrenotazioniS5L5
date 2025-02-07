@@ -26,10 +26,14 @@ public class Utente {
     @OneToMany(mappedBy = "utente")
     private List<Prenotazione> prenotazioneList;
 
-    public Utente(String username, String nomeCompleto, String email, List<Prenotazione> prenotazioneList) {
+    public Utente(String username, String nomeCompleto, String email) {
         this.username = username;
         this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.prenotazioneList = prenotazioneList;
+    }
+
+    public void addPrenotazioni(Prenotazione prenotazione){
+        this.prenotazioneList.add(prenotazione);
     }
 }

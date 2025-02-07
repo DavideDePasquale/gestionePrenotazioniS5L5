@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -21,6 +23,8 @@ public class Edificio {
     private String indirizzo;
     @Column(nullable = false)
     private String citta;
+    @OneToMany(mappedBy = "edificio", cascade = CascadeType.ALL)
+    private List<Postazione> postazioneList;
 
     public Edificio(String nome, String indirizzo, String citta) {
         this.nome = nome;

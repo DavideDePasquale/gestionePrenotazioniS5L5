@@ -3,14 +3,18 @@ package com.epicode.gestionePrenotazioniS5L5.configuration;
 import com.epicode.gestionePrenotazioniS5L5.enumeration.TipoPostazione;
 import com.epicode.gestionePrenotazioniS5L5.model.Edificio;
 import com.epicode.gestionePrenotazioniS5L5.model.Postazione;
+import com.epicode.gestionePrenotazioniS5L5.model.Prenotazione;
 import com.epicode.gestionePrenotazioniS5L5.model.Utente;
 import com.epicode.gestionePrenotazioniS5L5.repository.EdificioDAORepository;
+import com.epicode.gestionePrenotazioniS5L5.repository.PostazioneDAORepository;
+import com.epicode.gestionePrenotazioniS5L5.repository.UtenteDAORepository;
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.time.LocalDateTime;
 import java.util.Locale;
 
 @Configuration
@@ -18,6 +22,8 @@ import java.util.Locale;
 public class AppConfiguration {
     Faker fake = new Faker(Locale.ITALY);
     @Autowired  EdificioDAORepository edificioDAORepository;
+    @Autowired UtenteDAORepository utenteDAORepository;
+    @Autowired PostazioneDAORepository postazioneDAORepository;
 
     //BEAN PER LA CREAZIONE DEGLI EDIFICI
     @Bean
@@ -210,6 +216,74 @@ public class AppConfiguration {
     @Bean
     public Utente utente(){
         return new Utente(fake.name().username(),fake.name().fullName(),fake.internet().emailAddress());
+    }
+
+
+
+    // MI CREDO DELLE PRENOTAZIONI
+
+    @Bean
+    public Prenotazione prenotazione1(){
+        Utente utente = utenteDAORepository.findByUsername("ileana.bellini");
+        if(utente == null){
+            throw new RuntimeException("❌Utente non trovato❌");
+
+        }
+        Postazione postazione = postazioneDAORepository.findById(852);
+        if (postazione == null){
+            throw new RuntimeException("❌Postazione non trovata❌");
+        }
+        Prenotazione p = new Prenotazione(LocalDateTime.now());
+        //qui ci aggiungo la postazione e l'utente cercati nel db
+        p.setPostazione(postazione);
+        p.setUtente(utente);
+        return p;
+    }
+    @Bean
+    public Prenotazione prenotazione2(){
+        Utente utente = utenteDAORepository.findByUsername("rosaria.vitali");
+        if(utente == null){
+            throw new RuntimeException("❌Utente non trovato❌");
+
+        }
+        Postazione postazione = postazioneDAORepository.findById(1052);
+        if(postazione == null){
+            throw new RuntimeException("❌Postazione non trovata❌");
+        }
+        Prenotazione p = new Prenotazione(LocalDateTime.of(2025,5,25,11,30));
+        p.setPostazione(postazione);
+        p.setUtente(utente);
+        return p;
+    }
+    @Bean
+    public Prenotazione prenotazione3(){
+        Utente utente = utenteDAORepository.findByUsername("rosaria.vitali");
+        if(utente == null){
+            throw new RuntimeException("❌Utente non trovato❌");
+        }
+        Postazione postazione = postazioneDAORepository.findById(1352);
+        if (postazione == null){
+            throw new RuntimeException("❌Postazione non trovata❌");
+        }
+        Prenotazione p = new Prenotazione(LocalDateTime.of(2025,4,10,17,15));
+        p.setUtente(utente);
+        p.setPostazione(postazione);
+        return p;
+    }
+    @Bean Prenotazione prenotazione4chenonva(){
+        Utente utente = utenteDAORepository.findByUsername("davide.romano");
+        if(utente == null){
+            throw new RuntimeException("❌Utente non trovato❌");
+        }
+        Postazione postazione = postazioneDAORepository.findById(1352);
+        if (postazione == null){
+            throw new RuntimeException("❌Postazione non trovata❌");
+        }
+        Prenotazione p = new Prenotazione(LocalDateTime.of(2025,4,10,17,15));
+        p.setUtente(utente);
+        p.setPostazione(postazione);
+        return p;
+
     }
 
 

@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostazioneDAORepository extends JpaRepository<Postazione,Long> {
+    Postazione findById(long id);
+
 }

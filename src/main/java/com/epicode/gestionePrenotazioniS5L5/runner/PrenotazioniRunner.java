@@ -2,9 +2,11 @@ package com.epicode.gestionePrenotazioniS5L5.runner;
 
 import com.epicode.gestionePrenotazioniS5L5.model.Edificio;
 import com.epicode.gestionePrenotazioniS5L5.model.Postazione;
+import com.epicode.gestionePrenotazioniS5L5.model.Prenotazione;
 import com.epicode.gestionePrenotazioniS5L5.model.Utente;
 import com.epicode.gestionePrenotazioniS5L5.service.EdificioServices;
 import com.epicode.gestionePrenotazioniS5L5.service.PostazioneServices;
+import com.epicode.gestionePrenotazioniS5L5.service.PrenotazioniServices;
 import com.epicode.gestionePrenotazioniS5L5.service.UtenteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +20,7 @@ public class PrenotazioniRunner implements CommandLineRunner {
     @Autowired private EdificioServices edificioServices;
     @Autowired private PostazioneServices postazioneServices;
     @Autowired private UtenteServices utenteServices;
+    @Autowired private PrenotazioniServices prenotazioniServices;
 
     @Override
     public void run(String... args) throws Exception {
@@ -41,11 +44,21 @@ public class PrenotazioniRunner implements CommandLineRunner {
 //            Utente u = utenteServices.createUtente();
 //            utenteServices.insertUtente(u);
 
+        // mi creo le prenotazioni
+
+//        Prenotazione p = prenotazioniServices.createPrenotazione1();
+//        prenotazioniServices.insertPrenotazione(p);
+
+//        Prenotazione p = prenotazioniServices.createPrenotazione2();
+//        prenotazioniServices.insertPrenotazione(p);
+
+//          Prenotazione p = prenotazioniServices.createPrenotazione3();
+//          prenotazioniServices.insertPrenotazione(p);
 
 
-
-
-
+        // Mi credo una prenotazione nello stesso orario e nella stessa postazione di un'altra prenotazione!
+//        Prenotazione p = prenotazioniServices.createPrenotazione4chenonva();
+//        prenotazioniServices.insertPrenotazione(p);
 
     }
 }

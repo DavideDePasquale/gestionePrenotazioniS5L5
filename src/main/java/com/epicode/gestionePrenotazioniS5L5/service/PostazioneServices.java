@@ -1,5 +1,6 @@
 package com.epicode.gestionePrenotazioniS5L5.service;
 
+import com.epicode.gestionePrenotazioniS5L5.enumeration.TipoPostazione;
 import com.epicode.gestionePrenotazioniS5L5.model.Edificio;
 import com.epicode.gestionePrenotazioniS5L5.model.Postazione;
 import com.epicode.gestionePrenotazioniS5L5.repository.EdificioDAORepository;
@@ -10,8 +11,10 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class PostazioneServices {
@@ -100,6 +103,11 @@ public class PostazioneServices {
     public void insertPostazione(Postazione postazione){
         postazioneDB.save(postazione);
         System.out.println("🎉 Postazione aggiunta correttamente nel DB 🎉");
+    }
+    @Transactional
+    public List<Postazione> returnPostazioniXCitta(TipoPostazione postazione, String nomeCitta){
+        List <Postazione> postazioniXCitta = postazioneDB.findPostazioniByTipoAndCitta(postazione,nomeCitta);
+        return postazioniXCitta;
     }
 
 

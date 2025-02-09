@@ -49,4 +49,8 @@ public class Postazione {
     public void addEdificio(Edificio edificio){
         this.edificio.getId();
     }
+    @Override
+    public String toString() {
+        return "Postazione [id=" + id + ", nome=" + descrizione + "]";
+    }
 }

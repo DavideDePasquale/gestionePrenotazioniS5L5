@@ -1,5 +1,6 @@
 package com.epicode.gestionePrenotazioniS5L5.runner;
 
+import com.epicode.gestionePrenotazioniS5L5.enumeration.TipoPostazione;
 import com.epicode.gestionePrenotazioniS5L5.model.Edificio;
 import com.epicode.gestionePrenotazioniS5L5.model.Postazione;
 import com.epicode.gestionePrenotazioniS5L5.model.Prenotazione;
@@ -59,6 +60,10 @@ public class PrenotazioniRunner implements CommandLineRunner {
         // Mi credo una prenotazione nello stesso orario e nella stessa postazione di un'altra prenotazione!
 //        Prenotazione p = prenotazioniServices.createPrenotazione4chenonva();
 //        prenotazioniServices.insertPrenotazione(p);
+
+        //mi ricerco le postazioni in base alla città e al tipo di postazione 🎆🥳
+         List<Postazione> postazioniXCitta = postazioneServices.returnPostazioniXCitta(TipoPostazione.OPENSPACE,"Roma");
+        postazioniXCitta.forEach(System.out::println);
 
     }
 }

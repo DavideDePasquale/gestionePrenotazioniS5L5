@@ -62,8 +62,8 @@ public class PrenotazioniRunner implements CommandLineRunner {
 //        prenotazioniServices.insertPrenotazione(p);
 
         //mi ricerco le postazioni in base alla città e al tipo di postazione 🎆🥳
-         List<Postazione> postazioniXCitta = postazioneServices.returnPostazioniXCitta(TipoPostazione.OPENSPACE,"Roma");
-        postazioniXCitta.forEach(System.out::println);
+//         List<Postazione> postazioniXCitta = postazioneServices.returnPostazioniXCitta(TipoPostazione.OPENSPACE,"Roma");
+//        postazioniXCitta.forEach(System.out::println);
 
     }
 }
